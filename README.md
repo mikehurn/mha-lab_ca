@@ -41,7 +41,8 @@ More to be written:
 
 
 At the minimum update (in init.pp) the following from the defaults!
-  String $root_country_name      = 'CA',
+```
+String $root_country_name      = 'CA',
   String $root_organization_name = 'MHA Ottawa',
   String $root_common_name       = 'Lab Root CA0',
   String $root_ocsp_subj         = "/C=CA/O=${root_organization_name}/CN=OCSP RootCA Responder",
@@ -49,10 +50,13 @@ At the minimum update (in init.pp) the following from the defaults!
   String $sub_organization_name = 'MHA Ottawa',
   String $sub_common_name       = 'Lab Sub CA0',
   String $sub_ocsp_subj         = "/C=CA/O=${root_organization_name}/CN=OCSP SubCA Responder"
+```
 
 Also you may want to change:
+```
   $certs_nfs        = '/srv/nfs'
   $certs_base       = "${certs_nfs}/Certificates"
+```
 
 When you have it installed you may want to NFS export $certs_base. 
 
