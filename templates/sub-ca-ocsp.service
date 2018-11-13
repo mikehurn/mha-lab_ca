@@ -1,0 +1,11 @@
+[Unit]
+Description=<%= @sub_ca_name %> <%= @sub_ocsp_subj %>
+After=syslog.target network.target
+
+[Service]
+ExecStart=<%= @openssl_cmd %> ocsp -port 9081 -index <%= @sub_ca_dir_db %>/index -rsigner <%= @sub_ca_ocsp_crt %> -rkey <%= @sub_ca_ocsp_key %> -CA <%= @sub_ca_crt %> 
+
+
+[Install]
+WantedBy=multi-user.target
+

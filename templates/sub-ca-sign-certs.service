@@ -1,0 +1,7 @@
+[Unit]
+Description= Starts the cert signing script
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/sub-ca-sign-certs.sh
+

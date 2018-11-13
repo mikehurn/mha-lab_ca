@@ -1,0 +1,11 @@
+[Unit]
+Description= Triggers the service that signs CSRs.
+
+[Path]
+PathModified=<%= @certs_requests %>
+PathModified=<%= @certs_server %>
+PathModified=<%= @certs_client %>
+
+[Install]
+WantedBy=multi-user.target
+
