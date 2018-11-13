@@ -61,10 +61,11 @@ Also you may want to change:
 When you have it installed you may want to NFS export $certs_base. 
 
 Then you may want to enable:
+```
   Boolean $root_ocsp_service_enabled = false,
   Boolean $sub_ocsp_service_enabled  = false,
   Boolean $sub_sign_service_enabled  = false,
-
+```
 
 ### Beginning with lab_ca
 
@@ -73,17 +74,22 @@ The very basic steps needed for a user to get the module up and running. This ca
 In the sub_ca directory:
 
 # Test build and sign a Demo Client cert
+```
 openssl req -new -config sub-ca.conf -out client.csr -keyout private/client.key
 openssl ca -config sub-ca.conf -in client.csr -out client.crt -extensions client_ext
+```
 
 # Test build and sign a Demo Server cert
+```
 openssl req -new -config sub-ca.conf -out server.csr -keyout private/server.key
 openssl ca -config sub-ca.conf -in server.csr -out server.crt -extensions server_ext
+```
 
 For example a Apache server will require the server.crt, the private/server.key and the sub-ca-chain.crt.
 
 
 # Test the OCSP responders.
+```
 cd /opt/root-ca
 
 openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ca-ocsp.crt -url http://127.0.0.1:9080
@@ -91,19 +97,21 @@ openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ca-ocsp.crt -url
 cd /opt/sub-ca
 
 openssl ocsp -issuer sub-ca.crt -CAfile sub-ca-chain.crt -cert sub-ca-ocsp.crt -url http://127.0.0.1:9081
+```
 
 # Test the signing service drop a CSR into the 'server' or the 'client' directories below:
-
+```
 $certs_server     = "${certs_base}/Requests/server"
 $certs_server_old = "${certs_base}/Requests/server/old"
 $certs_client     = "${certs_base}/Requests/client"
 $certs_client_old = "${certs_base}/Requests/client/old"
+```
 
 When signed the CSR is moved to the matching 'old' directory.
 The signed certificate is placed into:
-
+```
 $certs_certs      = "${certs_base}/Certificates"
-
+```
 
 ## Usage
 
