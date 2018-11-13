@@ -42,7 +42,7 @@ More to be written:
 
 At the minimum update (in init.pp) the following from the defaults!
 ```
-String $root_country_name      = 'CA',
+  String $root_country_name      = 'CA',
   String $root_organization_name = 'MHA Ottawa',
   String $root_common_name       = 'Lab Root CA0',
   String $root_ocsp_subj         = "/C=CA/O=${root_organization_name}/CN=OCSP RootCA Responder",
@@ -136,7 +136,8 @@ Note: At the moment this code is in the early stages of development it still nee
 Also as it develops I am looking to better follow the current 'best practice' for x509 CAs.
 
 
-# Todo: I plan to update the code to work as an intermediate or a root CA.
+# Todo:
+I plan to update the code to work as an intermediate or a root CA.
 
 ## Release Notes/Contributors/Etc. **Optional**
 
